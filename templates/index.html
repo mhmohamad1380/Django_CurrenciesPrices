@@ -35,7 +35,7 @@
         {% if item.percentage > 0 %}
             <tr style="background-color: green">
                 <td class="col-md-5 col-sm-5 col-xs-5">{{ item.title }}</td>
-                <td class="col-md-5 col-sm-5 col-xs-5">{{ item.price }} تومان</td>
+                <td class="col-md-5 col-sm-5 col-xs-5">{{ item.price }} ریال</td>
                 {% if item.percentage > 0 %}
                     <td style="color: green" class="col-md-2 col-sm-2 col-xs-5">{{ item.percentage }}%</td>
                 {% elif item.percentage < 0 %}
@@ -47,7 +47,7 @@
         {% elif item.percentage < 0 %}
             <tr style="background-color: red">
                 <td class="col-md-5 col-sm-5 col-xs-5">{{ item.title }}</td>
-                <td class="col-md-5 col-sm-5 col-xs-5">{{ item.price }} تومان</td>
+                <td class="col-md-5 col-sm-5 col-xs-5">{{ item.price }} ریال</td>
                 {% if item.percentage > 0 %}
                     <td style="color: green" class="col-md-2 col-sm-2 col-xs-5">{{ item.percentage }}%</td>
                 {% elif item.percentage < 0 %}
@@ -59,7 +59,7 @@
         {% else %}
             <tr>
                 <td class="col-md-5 col-sm-5 col-xs-5">{{ item.title }}</td>
-                <td class="col-md-5 col-sm-5 col-xs-5">{{ item.price }} تومان</td>
+                <td class="col-md-5 col-sm-5 col-xs-5">{{ item.price }} ریال</td>
                 {% if item.percentage > 0 %}
                     <td style="color: green" class="col-md-2 col-sm-2 col-xs-5">{{ item.percentage }}%</td>
                 {% elif item.percentage < 0 %}
