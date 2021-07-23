@@ -1,0 +1,1 @@
+web: gunicorn CurrenciesPrices.wsgi --log-file -

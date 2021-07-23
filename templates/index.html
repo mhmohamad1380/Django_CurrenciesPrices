@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>HomePage</title>
+    <style>
+        td {
+            font-family: Vazir;
+        }
+
+        body {
+            background-color: grey;
+        }
+    </style>
+</head>
+<body>
+<nav style="border-bottom-left-radius: 20px;border-bottom-right-radius: 20px" class="navbar navbar-light bg-light container">
+  <a class="navbar-brand" href="/api">API</a>
+</nav>
+<div class="container">
+    <table
+        style="text-align: right;direction: rtl;margin-top: 10px;margin-bottom: 10px;background-color: white;border: darkgrey solid 1px;border-radius: 20px"
+        class="table">
+    <thead>
+    <tr>
+        <th scope="col">عنوان</th>
+        <th scope="col">قیمت</th>
+        <th scope="col">درصد تغییر</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in prices %}
+        {% if item.percentage > 0 %}
+            <tr style="background-color: green">
+                <td class="col-md-5 col-sm-5 col-xs-5">{{ item.title }}</td>
+                <td class="col-md-5 col-sm-5 col-xs-5">{{ item.price }} تومان</td>
+                {% if item.percentage > 0 %}
+                    <td style="color: green" class="col-md-2 col-sm-2 col-xs-5">{{ item.percentage }}%</td>
+                {% elif item.percentage < 0 %}
+                    <td style="color: red" class="col-md-2 col-sm-2 col-xs-5">{{ item.percentage }}%</td>
+                {% else %}
+                    <td class="col-md-2 col-sm-2 col-xs-5">{{ item.percentage }}%</td>
+                {% endif %}
+            </tr>
+        {% elif item.percentage < 0 %}
+            <tr style="background-color: red">
+                <td class="col-md-5 col-sm-5 col-xs-5">{{ item.title }}</td>
+                <td class="col-md-5 col-sm-5 col-xs-5">{{ item.price }} تومان</td>
+                {% if item.percentage > 0 %}
+                    <td style="color: green" class="col-md-2 col-sm-2 col-xs-5">{{ item.percentage }}%</td>
+                {% elif item.percentage < 0 %}
+                    <td style="color: red" class="col-md-2 col-sm-2 col-xs-5">{{ item.percentage }}%</td>
+                {% else %}
+                    <td class="col-md-2 col-sm-2 col-xs-5">{{ item.percentage }}%</td>
+                {% endif %}
+            </tr>
+        {% else %}
+            <tr>
+                <td class="col-md-5 col-sm-5 col-xs-5">{{ item.title }}</td>
+                <td class="col-md-5 col-sm-5 col-xs-5">{{ item.price }} تومان</td>
+                {% if item.percentage > 0 %}
+                    <td style="color: green" class="col-md-2 col-sm-2 col-xs-5">{{ item.percentage }}%</td>
+                {% elif item.percentage < 0 %}
+                    <td style="color: red" class="col-md-2 col-sm-2 col-xs-5">{{ item.percentage }}%</td>
+                {% else %}
+                    <td class="col-md-2 col-sm-2 col-xs-5">{{ item.percentage }}%</td>
+                {% endif %}
+            </tr>
+        {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+</body>
+</html>
