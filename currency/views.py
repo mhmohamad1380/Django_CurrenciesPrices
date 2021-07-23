@@ -38,7 +38,7 @@ def homepage(request):
         price_list_un.append(item.text)
     for price in price_list_un:
         if price_list_un.index(price) % 2 == 0:
-            price_list.append(int(price.replace(',', '')) / 10)
+            price_list.append(int(price.replace(',', '')))
 
     price_dict = dict(zip(empty_list, price_list))
 
@@ -48,11 +48,7 @@ def homepage(request):
     # print(price_dict)
 
     price_listed = list(price_dict.items())
-    en_num = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
-    fa_num = ['۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹', '۰']
-    dicted_prices = dict(zip(en_num, fa_num))
 
-    print(price_listed)
 
     for item in price_listed:
         searched = Currencies.objects.filter(title__iexact=item[0]).exists()
