@@ -54,18 +54,6 @@ def homepage(request):
         searched = Currencies.objects.filter(title__iexact=item[0]).exists()
         if not searched:
             Currencies.objects.create(title=item[0], price=item[1])
-        elif searched:
-            item_searched: Currencies = Currencies.objects.filter(title__iexact=item[0])
-            item_price = Currencies.objects.filter(title__iexact=item[0]).first().price
-            new_item_price = item[1]
-            percentage = int(new_item_price) * 100 / int(item_price)
-            if int(new_item_price) < int(item_price):
-                item_searched.update(percentage=f'-{percentage}')
-
-            elif int(new_item_price) > int(item_price):
-                item_searched.update(percentage=f'+{percentage}')
-            else:
-                item_searched.update(percentage='0')
     prices: Currencies = Currencies.objects.all()
     context = {
         'prices': prices
