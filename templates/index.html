@@ -27,48 +27,14 @@
     <tr>
         <th scope="col">عنوان</th>
         <th scope="col">قیمت</th>
-        <th scope="col">درصد تغییر</th>
     </tr>
     </thead>
     <tbody>
     {% for item in prices %}
-        {% if item.percentage > 0 %}
             <tr style="background-color: green">
                 <td class="col-md-5 col-sm-5 col-xs-5">{{ item.title }}</td>
                 <td class="col-md-5 col-sm-5 col-xs-5">{{ item.price }} ریال</td>
-                {% if item.percentage > 0 %}
-                    <td style="color: green" class="col-md-2 col-sm-2 col-xs-5">{{ item.percentage }}%</td>
-                {% elif item.percentage < 0 %}
-                    <td style="color: red" class="col-md-2 col-sm-2 col-xs-5">{{ item.percentage }}%</td>
-                {% else %}
-                    <td class="col-md-2 col-sm-2 col-xs-5">{{ item.percentage }}%</td>
-                {% endif %}
             </tr>
-        {% elif item.percentage < 0 %}
-            <tr style="background-color: red">
-                <td class="col-md-5 col-sm-5 col-xs-5">{{ item.title }}</td>
-                <td class="col-md-5 col-sm-5 col-xs-5">{{ item.price }} ریال</td>
-                {% if item.percentage > 0 %}
-                    <td style="color: green" class="col-md-2 col-sm-2 col-xs-5">{{ item.percentage }}%</td>
-                {% elif item.percentage < 0 %}
-                    <td style="color: red" class="col-md-2 col-sm-2 col-xs-5">{{ item.percentage }}%</td>
-                {% else %}
-                    <td class="col-md-2 col-sm-2 col-xs-5">{{ item.percentage }}%</td>
-                {% endif %}
-            </tr>
-        {% else %}
-            <tr>
-                <td class="col-md-5 col-sm-5 col-xs-5">{{ item.title }}</td>
-                <td class="col-md-5 col-sm-5 col-xs-5">{{ item.price }} ریال</td>
-                {% if item.percentage > 0 %}
-                    <td style="color: green" class="col-md-2 col-sm-2 col-xs-5">{{ item.percentage }}%</td>
-                {% elif item.percentage < 0 %}
-                    <td style="color: red" class="col-md-2 col-sm-2 col-xs-5">{{ item.percentage }}%</td>
-                {% else %}
-                    <td class="col-md-2 col-sm-2 col-xs-5">{{ item.percentage }}%</td>
-                {% endif %}
-            </tr>
-        {% endif %}
     {% endfor %}
     </tbody>
 </table>
