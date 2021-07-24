@@ -51,9 +51,11 @@ def homepage(request):
 
 
     for item in price_listed:
-        searched = Currencies.objects.filter(title__iexact=item[0]).exists()
-        if not searched:
+        searched = Currencies.objects.filter(title__iexact=item[0])
+        if not searched.exists():
             Currencies.objects.create(title=item[0], price=item[1])
+        elif searched.exists():
+            searched.first().update(price=item[1])
     prices: Currencies = Currencies.objects.all()
     context = {
         'prices': prices
