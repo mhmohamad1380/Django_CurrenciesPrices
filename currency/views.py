@@ -55,7 +55,7 @@ def homepage(request):
         if not searched.exists():
             Currencies.objects.create(title=item[0], price=item[1])
         elif searched.exists():
-            searched.first().update(price=item[1])
+            searched.update(price=item[1])
     prices: Currencies = Currencies.objects.all()
     context = {
         'prices': prices
